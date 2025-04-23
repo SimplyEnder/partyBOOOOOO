@@ -3,50 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PartyPlanner</title>
+    <title>Party Planner</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>🎉 PartyPlanner</h1>
-            <p>Plan your party and let your friends RSVP!</p>
-        </header>
+        <h1>🎉 Party Planner</h1>
 
-        <section id="party-settings">
-            <h2>Set Party Details</h2>
+        <!-- Party Creation Section -->
+        <section id="create-party-section">
+            <h2>Create a Party</h2>
             <form id="party-form">
-                <label for="party-date">Party Date:</label>
                 <input type="date" id="party-date" required>
-
-                <label for="party-description">Description:</label>
-                <textarea id="party-description" rows="3" required></textarea>
-
-                <label for="invite-message">Invite Message:</label>
-                <textarea id="invite-message" rows="2" required></textarea>
-
-                <button type="submit">Save Party</button>
+                <textarea id="party-description" placeholder="Party description" required></textarea>
+                <textarea id="invite-message" placeholder="Invite message" required></textarea>
+                <button type="submit">Create Party</button>
             </form>
         </section>
 
+        <!-- Party Invitation Section -->
         <section id="invite-section" class="hidden">
-            <h2>You're Invited!</h2>
-            <p id="display-message"></p>
+            <div id="display-message" class="invite-message"></div>
 
+            <h2>Join the Party</h2>
             <form id="rsvp-form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required>
-
-                <label for="surname">Surname:</label>
-                <input type="text" id="surname" required>
-
-                <button type="submit">Join Party</button>
+                <input type="text" id="name" placeholder="Your name" required>
+                <input type="text" id="surname" placeholder="Your surname" required>
+                <button type="submit">Join</button>
             </form>
 
-            <div id="guest-list">
-                <h3>Guest List:</h3>
-                <ul id="guests"></ul>
-            </div>
+            <h3>Guest List</h3>
+            <ul id="guests"></ul>
         </section>
     </div>
 
