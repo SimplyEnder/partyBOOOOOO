@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Party Planner</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Party Planner</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>🎉 Party Planner</h1>
+  <div class="container">
+    <h1>🎉 Party Planner</h1>
 
-        <!-- Party Creation Section -->
-        <section id="create-party-section">
-            <h2>Create a Party</h2>
-            <form id="party-form">
-                <input type="date" id="party-date" required>
-                <textarea id="party-description" placeholder="Party description" required></textarea>
-                <textarea id="invite-message" placeholder="Invite message" required></textarea>
-                <button type="submit">Create Party</button>
-            </form>
-        </section>
+    <section id="create-party-section">
+      <h2>Create a Party</h2>
+      <form id="party-form">
+        <label for="party-date">Date</label>
+        <input type="date" id="party-date" required />
 
-        <!-- Party Invitation Section -->
-        <section id="invite-section" class="hidden">
-            <div id="display-message" class="invite-message"></div>
+        <label for="party-description">Description</label>
+        <textarea id="party-description" placeholder="Party description" required></textarea>
 
-            <h2>Join the Party</h2>
-            <form id="rsvp-form">
-                <input type="text" id="name" placeholder="Your name" required>
-                <input type="text" id="surname" placeholder="Your surname" required>
-                <button type="submit">Join</button>
-            </form>
+        <label for="invite-message">Invite Message</label>
+        <textarea id="invite-message" placeholder="Invite message" maxlength="200" required></textarea>
+        <small id="message-count">0/200</small>
 
-            <h3>Guest List</h3>
-            <ul id="guests"></ul>
-        </section>
-    </div>
+        <button type="submit">Create Party</button>
+      </form>
+    </section>
 
-    <script src="script.js"></script>
+    <section id="invite-section" class="hidden">
+      <div id="display-message" class="invite-message"></div>
+
+      <h2>Join the Party</h2>
+      <form id="rsvp-form">
+        <label for="name">First Name</label>
+        <input type="text" id="name" placeholder="Your name" required />
+
+        <label for="surname">Last Name</label>
+        <input type="text" id="surname" placeholder="Your surname" required />
+
+        <button type="submit">Join</button>
+        <div id="form-feedback" class="feedback"></div>
+      </form>
+
+      <h3>Guest List</h3>
+      <ul id="guests"></ul>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
