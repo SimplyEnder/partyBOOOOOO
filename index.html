@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PartyPlanner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 PartyPlanner</h1>
+            <p>Plan your party and let your friends RSVP!</p>
+        </header>
+
+        <section id="party-settings">
+            <h2>Set Party Details</h2>
+            <form id="party-form">
+                <label for="party-date">Party Date:</label>
+                <input type="date" id="party-date" required>
+
+                <label for="party-description">Description:</label>
+                <textarea id="party-description" rows="3" required></textarea>
+
+                <label for="invite-message">Invite Message:</label>
+                <textarea id="invite-message" rows="2" required></textarea>
+
+                <button type="submit">Save Party</button>
+            </form>
+        </section>
+
+        <section id="invite-section" class="hidden">
+            <h2>You're Invited!</h2>
+            <p id="display-message"></p>
+
+            <form id="rsvp-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required>
+
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" required>
+
+                <button type="submit">Join Party</button>
+            </form>
+
+            <div id="guest-list">
+                <h3>Guest List:</h3>
+                <ul id="guests"></ul>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
