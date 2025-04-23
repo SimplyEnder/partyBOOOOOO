@@ -1,74 +1,95 @@
 body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #f0f0f0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
 }
 
 .container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
 }
 
 h1, h2, h3 {
-    text-align: center;
-    color: #ff69b4;
+  text-align: center;
+  color: #ff69b4;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 1rem 0;
+}
+
+label {
+  font-size: 0.95rem;
+  color: #aaa;
 }
 
 input[type="text"],
 input[type="date"],
 textarea {
-    padding: 0.7rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #2c2c2c;
-    color: #fff;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #2c2c2c;
+  color: #fff;
+}
+
+textarea {
+  resize: vertical;
 }
 
 button {
-    padding: 0.7rem;
-    background-color: #ff4081;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
+  padding: 0.7rem;
+  background-color: #ff4081;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #f50057;
+  background-color: #f50057;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 li {
-    padding: 0.5rem;
-    border-bottom: 1px solid #444;
+  padding: 0.5rem;
+  border-bottom: 1px solid #444;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .invite-message {
-    background-color: #2b2b2b;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border-left: 4px solid #ff69b4;
+  background-color: #2b2b2b;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #ff69b4;
+}
+
+.feedback {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #90ee90;
+}
+
+#message-count {
+  font-size: 0.8rem;
+  text-align: right;
+  color: #999;
 }
