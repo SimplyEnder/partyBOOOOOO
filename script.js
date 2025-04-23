@@ -1,68 +1,70 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const partyForm = document.getElementById('party-form');
-    const rsvpForm = document.getElementById('rsvp-form');
-    const inviteSection = document.getElementById('invite-section');
-    const displayMessage = document.getElementById('display-message');
-    const guestList = document.getElementById('guests');
-    const createPartyBtn = document.getElementById('create-party-btn');
-    const joinPartyBtn = document.getElementById('join-party-btn');
-    const partySettingsSection = document.getElementById('party-settings');
+  const partyForm = document.getElementById('party-form');
+  const rsvpForm = document.getElementById('rsvp-form');
+  const inviteSection = document.getElementById('invite-section');
+  const displayMessage = document.getElementById('display-message');
+  const guestList = document.getElementById('guests');
+  const feedback = document.getElementById('form-feedback');
+  const messageInput = document.getElementById('invite-message');
+  const messageCount = document.getElementById('message-count');
 
-    let partyDetails = {};
-    let guests = [];
+  let partyDetails = {};
+  let guests = [];
 
-    createPartyBtn.addEventListener('click', () => {
-        partySettingsSection.classList.remove('hidden');
-        inviteSection.classList.add('hidden');
-    });
+  // Live character count
+  messageInput.addEventListener('input', () => {
+    messageCount.textContent = `${messageInput.value.length}/200`;
+  });
 
-    joinPartyBtn.addEventListener('click', () => {
-        if (partyDetails.message) {
-            displayMessage.innerHTML = `<strong>${partyDetails.message}</strong><br>Date: ${partyDetails.date}<br>${partyDetails.description}`;
-            inviteSection.classList.remove('hidden');
-            partySettingsSection.classList.add('hidden');
-        } else {
-            alert('No party has been created yet.');
-        }
-    });
+  partyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    partyForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+    partyDetails = {
+      date: document.getElementById('party-date').value,
+      description: document.getElementById('party-description').value,
+      message: messageInput.value,
+    };
 
-        partyDetails.date = document.getElementById('party-date').value;
-        partyDetails.description = document.getElementById('party-description').value;
-        partyDetails.message = document.getElementById('invite-message').value;
+    displayMessage.innerHTML = `<strong>${partyDetails.message}</strong><br>Date: ${partyDetails.date}<br>${partyDetails.description}`;
+    inviteSection.classList.remove('hidden');
+  });
 
-        displayMessage.innerHTML = `<strong>${partyDetails.message}</strong><br>Date: ${partyDetails.date}<br>${partyDetails.description}`;
+  rsvpForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    feedback.textContent = '';
 
-        inviteSection.classList.remove('hidden');
-        partySettingsSection.classList.add('hidden');
-    });
+    const name = document.getElementById('name').value.trim();
+    const surname = document.getElementById('surname').value.trim();
 
-    rsvpForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value.trim();
-        const surname = document.getElementById('surname').value.trim();
-
-        if (name && surname) {
-            const alreadyJoined = guests.some(g => g.name.toLowerCase() === name.toLowerCase() && g.surname.toLowerCase() === surname.toLowerCase());
-            if (alreadyJoined) {
-                alert("You've already joined the party!");
-                return;
-            }
-            guests.push({ name, surname });
-            renderGuestList();
-            rsvpForm.reset();
-        }
-    });
-
-    function renderGuestList() {
-        guestList.innerHTML = '';
-        guests.forEach((guest) => {
-            const li = document.createElement('li');
-            li.textContent = `${guest.name} ${guest.surname}`;
-            guestList.appendChild(li);
-        });
+    if (!name || !surname) {
+      feedback.textContent = "Please fill in both name and surname.";
+      return;
     }
+
+    const exists = guests.some(
+      (guest) =>
+        guest.name.toLowerCase() === name.toLowerCase() &&
+        guest.surname.toLowerCase() === surname.toLowerCase()
+    );
+
+    if (exists) {
+      feedback.textContent = "You’ve already joined this party!";
+      feedback.style.color = "#ff6f91";
+    } else {
+      guests.push({ name, surname });
+      renderGuestList();
+      rsvpForm.reset();
+      feedback.textContent = "Thanks for joining!";
+      feedback.style.color = "#90ee90";
+    }
+  });
+
+  function renderGuestList() {
+    guestList.innerHTML = '';
+    guests.forEach((guest) => {
+      const li = document.createElement('li');
+      li.textContent = `${guest.name} ${guest.surname}`;
+      guestList.appendChild(li);
+    });
+  }
 });
